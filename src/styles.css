@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+
+html{
+    background: linear-gradient(to left top, #ffe0e0, #e1e3ff);
+    height: 100vh;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header{
+    width: 100vw;
+    min-height: 15vh;
+    background-color: rgb(222, 66, 118);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 3px;
+    font-size: 2.2rem;
+    text-shadow: 3px 3px 10px black;
+}
+.card-container{
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 100vh;
+    width: 80vw;
+}
+
+.card {
+    margin-bottom: 3%;
+   height: 280px;
+    width: 250px;
+    border: 2px solid rgba(10, 13, 44, 0.639);
+    box-shadow: 5px 10px 20px  black;
+}
+
+.name {
+    background-color: #2a307d;
+    height: 90px;
+    color: azure;
+    font-size: 2.2rem;
+    padding-left: 5%;
+    line-height: 1.1;
+    border-bottom: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 2%;
+    text-shadow: 2px 2px 2px black;
+}
+
+.card-body{
+    background-color: #e0e2fd9d;
+    height: 183px;
+    display: flex;
+   justify-content: center;
+   
+}
+
+.card-items{
+    height: 100px;
+}
+
+.card-items p {
+    border: 1px solid grey;
+    margin-bottom: 1%;
+    padding: 8px 0 8px 5px;
+    background-color: white;
+    width: 220px;
+    font-size: 14px;
+    box-shadow: 1px 1px 5px black;
+}
+
+.card-1 {
+    margin-top: 10%;
+}
