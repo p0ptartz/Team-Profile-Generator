@@ -6,6 +6,7 @@ const Intern = require("./lib/Intern")
 const fs = require("fs")
 
 let employeeInfo = []
+
 // ask manager questions - then take that data and create HTML card. - then ask LIST - if engineer, ask engineerQ's - if intern, ask intern q's -  create card for each - if finished log "Thanks You"
 
 const managerQuestions = [{
@@ -30,6 +31,62 @@ const managerQuestions = [{
 }
 ]
 
+function engineerQuestions() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "engineerName",
+            message: "What is your name?"
+        },
+        {
+            type: "input",
+            name: "engineerId",
+            message: "What is your employee ID?"
+        },
+        {
+            type: "input",
+            name: "engineerEmail",
+            message: "What is your email address?"
+        },
+        {
+            type: "input",
+            name: "github",
+            message: "Enter your GitHub account:"
+        }
+    ]).then((data) => {
+        const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.github)
+        employeeInfo.push(engineer)
+    })
+}
+
+function internQuestions() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "internName",
+            message: "What is your name?"
+        },
+        {
+            type: "input",
+            name: "internId",
+            message: "What is your employee ID?"
+        },
+        {
+            type: "input",
+            name: "internEmail",
+            message: "What is your email address?"
+        },
+        {
+            type: "input",
+            name: "schoolInfo",
+            message: "What school did you attend??"
+        }
+    ]).then((data) => {
+        const intern = new Intern(data.internName, data.internId, data.internEmail, data.schoolInfo)
+        employeeInfo.push(intern)
+    })
+}
+
 function employeeList() {
     inquirer.prompt({
         type: "list",
@@ -39,10 +96,11 @@ function employeeList() {
         .then((data) => {
             if (data.employeeRole === "Engineer") {
                 //engineer question function
-                // push into array
+                engineerQuestions()
+
             } else if (data.employeeRole === "Intern") {
-                // intern question function
-                // push into array
+                internQuestions()
+
             } else {
                 console.log("YOU DONE")
                 // generate HTML???
