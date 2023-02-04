@@ -4,11 +4,22 @@ const Engineer = require("./lib/Engineer")
 const Manager = require("./lib/Manager")
 const Intern = require("./lib/Intern")
 const fs = require("fs")
-// const generateHTML = require("./src/generate")
+
 
 let employeeInfo = []
 
 // ask manager questions - then take that data and create HTML card. - then ask LIST - if engineer, ask engineerQ's - if intern, ask intern q's -  create card for each - if finished log "Thanks You"
+
+init = () => {
+    employeeInfo = [];
+    inquirer.prompt(managerQuestions)
+        .then((data) => {
+            const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber)
+            employeeInfo.push(manager)
+            console.log(employeeInfo)
+            employeeList()
+        })
+}
 
 const managerQuestions = [{
     type: "input",
@@ -111,23 +122,26 @@ function employeeList() {
             } else {
                 generateHTML()
                 console.log("YOUR TEAM HAS BEEN CREATED!")
-                // generate HTML???
             }
         })
 }
 
-init = () => {
-    inquirer.prompt(managerQuestions)
-        .then((data) => {
-            const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber)
-            employeeInfo.push(manager)
-            console.log(employeeInfo)
-            employeeList()
-        })
-}
-
 function generateHTML() {
-    let html = `<div class = "card-container">`;
+    let html = `<!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles.css">
+        <title>My Team</title>
+    </head>
+    
+    <body>
+        <header>
+            <h1>MY TEAM</h1>
+        </header><main class = "card-container">`;
 
     for (const employee of employeeInfo) {
         html += `
@@ -139,16 +153,15 @@ function generateHTML() {
           <div class="card-body">
             <div class="card-items">
               <p class="card-1">ID: ${employee.id}</p>
-              <p class="card-2">EMAIL: <a href="">${employee.email}</a> </p>
-              <p class="card-3">${employee instanceof Manager ? 'Office Number: ' + employee.officeNumber :
-                employee instanceof Engineer ? 'GitHub: ' + employee.github :
-                    'School: ' + employee.school}</p>
+              <p class="card-2">EMAIL: <a href="mailto:${employee.email}">${employee.email}</a> </p>
+              <p class="card-3">${employee instanceof Manager ? 'Office Number: ' + employee.officeNumber : employee instanceof Engineer ? `GitHub: <a href='https://github.com/${employee.github}'>${employee.github}</a>` : 'School: ' + employee.school
+            }</p>
             </div>
           </div>
         </div>`;
     }
-    html += `</div> </body> </html>`
-    fs.appendFileSync("./src/your-team.html", html);
+    html += `</main> </body> </html>`
+    fs.writeFileSync("./src/your-team.html", html);
 }
 
 init()
