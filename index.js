@@ -4,6 +4,7 @@ const Engineer = require("./lib/Engineer")
 const Manager = require("./lib/Manager")
 const Intern = require("./lib/Intern")
 const fs = require("fs")
+// const generateHTML = require("./src/generate")
 
 let employeeInfo = []
 
@@ -108,6 +109,7 @@ function employeeList() {
                 internQuestions()
 
             } else {
+                generateHTML()
                 console.log("YOUR TEAM HAS BEEN CREATED!")
                 // generate HTML???
             }
@@ -122,6 +124,31 @@ init = () => {
             console.log(employeeInfo)
             employeeList()
         })
+}
+
+function generateHTML() {
+    let html = `<div class = "card-container">`;
+
+    for (const employee of employeeInfo) {
+        html += `
+        <div class="card">
+          <div class="name">
+            <p class="card-name">${employee.name}</p>
+            <p class="card-title">${employee.getRole()}</p>
+          </div>
+          <div class="card-body">
+            <div class="card-items">
+              <p class="card-1">ID: ${employee.id}</p>
+              <p class="card-2">EMAIL: <a href="">${employee.email}</a> </p>
+              <p class="card-3">${employee instanceof Manager ? 'Office Number: ' + employee.officeNumber :
+                employee instanceof Engineer ? 'GitHub: ' + employee.github :
+                    'School: ' + employee.school}</p>
+            </div>
+          </div>
+        </div>`;
+    }
+    html += `</div> </body> </html>`
+    fs.appendFileSync("./src/your-team.html", html);
 }
 
 init()
