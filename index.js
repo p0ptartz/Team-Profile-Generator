@@ -56,7 +56,10 @@ function engineerQuestions() {
     ]).then((data) => {
         const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.github)
         employeeInfo.push(engineer)
-    })
+        setTimeout(() => {
+            employeeList()
+        })
+    }, 200)
 }
 
 function internQuestions() {
@@ -84,7 +87,10 @@ function internQuestions() {
     ]).then((data) => {
         const intern = new Intern(data.internName, data.internId, data.internEmail, data.schoolInfo)
         employeeInfo.push(intern)
-    })
+        setTimeout(() => {
+            employeeList()
+        })
+    }, 200)
 }
 
 function employeeList() {
@@ -102,7 +108,7 @@ function employeeList() {
                 internQuestions()
 
             } else {
-                console.log("YOU DONE")
+                console.log("YOUR TEAM HAS BEEN CREATED!")
                 // generate HTML???
             }
         })
