@@ -13,31 +13,31 @@ In the terminal, run the command ```node index.js``` \
 #
 ## Screenshots:
 <details>
-<summary>Homepage</summary>
+<summary>HTML view</summary>
 
-![homepage view](screenshots/homepage.png))
+![html view](img/HTML.png)
 </details>
 
 <details>
-<summary>Homepage</summary>
+<summary>Manager cmd</summary>
 
-![homepage view](screenshots/homepage.png))
+![manager cmd line](img/manager.png)
 </details>
 
 <details>
-<summary>Homepage</summary>
+<summary>Engineer cmd</summary>
 
-![homepage view](screenshots/homepage.png))
+![cmd line](img/engineer.png)
 </details>
 
 <details>
-<summary>Homepage</summary>
+<summary>Intern cmd</summary>
 
-![homepage view](screenshots/homepage.png))
+![cmd line](img/intern.png)
 </details>
 
 #
 
 ## Video Demo:
-
+[THIS IS A LIVE DEMO](https://drive.google.com/file/d/1tDf0HtHsfYRw-vfR1l3c2C0Fc-K_v7_q/view)
 #
